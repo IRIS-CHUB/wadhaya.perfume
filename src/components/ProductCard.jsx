@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Shared/Button'; // Ensure Button component is correctly imported
+import Button from "./Button.jsx"; // Ensure Button component is correctly imported
 
 const ProductCard = ({ ProductsData }) => {
   return (
