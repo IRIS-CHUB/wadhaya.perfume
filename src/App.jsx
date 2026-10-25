@@ -1,4 +1,5 @@
-
+import Attar from './assets/images/perfume_img/at5.png';
+import Perfume from './assets/images/perfume_img/pr4.png';
 import React from 'react';
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
