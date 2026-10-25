@@ -1,5 +1,5 @@
 import React from 'react';
-import Heading from '../Shared/Heading';
+import Heading from "./Heading.jsx";
 
 const BlogData = [
     {
