@@ -15,6 +15,9 @@
     "lucide-react": "latest",
     "react-slick": "latest",
     "slick-carousel": "latest",
-    "aos": "latest"
+    "aos": "latest",
+    "tailwindcss": "3",
+    "postcss": "latest",
+    "autoprefixer": "latest"
   }
 }
