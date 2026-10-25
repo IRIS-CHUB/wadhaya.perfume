@@ -7,7 +7,6 @@ import Img1p from "../assets/images/perfume_img/pr1.png";
 import Img2p from "../assets/images/perfume_img/pr2.png";
 import Img3p from "../assets/images/perfume_img/pr3.png";
 import Img4p from "../assets/images/perfume_img/pr4.png";
-import Img5p from "../assets/images/perfume_img/pr5.png";
 
 import Img1a from "../assets/images/perfume_img/at1.png";
 import Img2a from "../assets/images/perfume_img/at2.png";
@@ -84,7 +83,6 @@ const Products = () => {
           title="Our Products"
           subtitle="Explore Our Products"
         />
-
         <ProductCard ProductsData={ProductsData} />
         <ProductCard ProductsData={ProductsData2} />
       </div>
