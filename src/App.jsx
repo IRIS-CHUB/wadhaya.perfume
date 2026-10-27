@@ -11,68 +11,19 @@ import Products from './components/Products.jsx';
 import Blogs from './components/Blogs.jsx';
 import Partners from './components/Partners.jsx';
 import Footer from './components/Footer.jsx';
-import Popup from './components/Popup.jsx';
+import Cart from './components/Cart.jsx';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
-const BannerData = {
-  discount: '30% OFF',
-  title: 'Wadhaya Perfume',
-  date: 'Limited Time',
-  image: Perfume ,
-  title2: 'Cool Fragrance',
-  title3: 'Special Sale',
-  title4: 'Discover your signature fragrance with Wadhaya.',
-  bgColor: '#088395',
+const BannerData={discount:'30% OFF',title:'Wadhaya Perfume',date:'Limited Time',image:Perfume,title2:'Signature Fragrance',title3:'A scent of distinction',title4:'Discover your signature fragrance with Wadhaya.',bgColor:'#8A6A3E'};
+const BannerData2={discount:'40% OFF',title:'Wadhaya Attar',date:'Limited Time',image:Attar,title2:'Arabian Oud',title3:'Tradition, reimagined',title4:'Discover exclusive fragrances with Wadhaya.',bgColor:'#332719'};
+const App=()=>{
+ const [cartOpen,setCartOpen]=React.useState(false);
+ const [cartItems,setCartItems]=React.useState([]);
+ const handleOrderPopup=()=>setCartOpen(true);
+ const addToCart=product=>{setCartItems(current=>{const found=current.find(item=>item.id===product.id);return found?current.map(item=>item.id===product.id?{...item,quantity:item.quantity+1}:item):[...current,{...product,quantity:1}];});setCartOpen(true);};
+ const changeQuantity=(id,quantity)=>{if(quantity<1){setCartItems(current=>current.filter(item=>item.id!==id));return;}setCartItems(current=>current.map(item=>item.id===id?{...item,quantity}:item));};
+ const removeFromCart=id=>setCartItems(current=>current.filter(item=>item.id!==id));
+ React.useEffect(()=>{AOS.init({duration:800,easing:'ease-in-sine',delay:100,offset:100,once:true});AOS.refresh();},[]);
+ return <div className="wadhaya-site dark:bg-bgdark bg-bgcolor duration-200 overflow-hidden"><Navbar handleOrderPopup={handleOrderPopup} cartCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}/><Hero handleOrderPopup={handleOrderPopup}/><div id="about"><Category/><Category2/><Services/></div><Banner data={BannerData}/><div id="Shop" className="wadhaya-collection-anchor"><Products onAddToCart={addToCart}/></div><Banner data={BannerData2}/><Blogs/><Partners/><div id="contactus"><Footer/></div>{cartOpen&&<Cart items={cartItems} onClose={()=>setCartOpen(false)} onChangeQuantity={changeQuantity} onRemove={removeFromCart}/>}</div>;
 };
-
-const BannerData2 = {
-  discount: '40% OFF',
-  title: 'Wadhaya Attar',
-  date: 'Limited Time',
-  image: Attar,
-  title2: 'Woody Attar',
-  title3: 'Special Sale',
-  title4: 'Discover exclusive fragrances with Wadhaya.',
-  bgColor: '#03113F',
-};
-
-const App = () => {
-  const [orderPopup, setOrderPopup] = React.useState(false);
-
-  const handleOrderPopup = () => {
-    setOrderPopup(!orderPopup);
-  };
-
-  React.useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-sine',
-      delay: 100,
-      offset: 100,
-    });
-    AOS.refresh();
-  }, []);
-
-  return (
-    <div className="dark:bg-bgdark bg-bgcolor duration-200 overflow-hidden">
-      <Navbar handleOrderPopup={handleOrderPopup} />
-      <Hero handleOrderPopup={handleOrderPopup} />
-      <Category />
-      <Category2 />
-      <Services />
-      <Banner data={BannerData} />
-      <Products />
-      <Banner data={BannerData2} />
-      <Blogs />
-      <Partners />
-      <Footer />
-      <Popup
-        orderPopup={orderPopup}
-        handleOrderPopup={handleOrderPopup}
-      />
-    </div>
-  );
-};
-
 export default App;

@@ -1,0 +1,57 @@
+import React from "react";
+import { Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
+import { WHATSAPP_NUMBER } from "../config.js";
+
+const Cart = ({ items, onClose, onChangeQuantity, onRemove }) => {
+  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const checkout = () => {
+    if (!WHATSAPP_NUMBER || !/^\d{8,15}$/.test(WHATSAPP_NUMBER)) {
+      window.alert("Add your WhatsApp Business number to src/config.js before enabling checkout.");
+      return;
+    }
+    const lines = items.map((item) => `• ${item.title} × ${item.quantity} — AED ${(item.price * item.quantity).toFixed(2)}`);
+    const message = ["Hello Wadhaya, I would like to place an order:", "", ...lines, "", `Total: AED ${total.toFixed(2)}`, "", "Please confirm availability and delivery details."].join("\n");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+  };
+
+  return (
+    <div className="wadhaya-cart-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
+      <aside className="wadhaya-cart-panel" role="dialog" aria-modal="true" aria-labelledby="wadhaya-cart-title">
+        <div className="wadhaya-cart-heading">
+          <div><span className="wadhaya-cart-kicker">YOUR SELECTION</span><h2 id="wadhaya-cart-title">Shopping bag <ShoppingBag size={19} /></h2></div>
+          <button type="button" onClick={onClose} aria-label="Close shopping bag" className="wadhaya-cart-close"><X size={22} /></button>
+        </div>
+        {items.length === 0 ? (
+          <div className="wadhaya-cart-empty"><ShoppingBag size={32} /><p>Your bag is waiting for a signature scent.</p><button type="button" onClick={onClose}>Continue exploring</button></div>
+        ) : (
+          <>
+            <div className="wadhaya-cart-items">
+              {items.map((item) => (
+                <div className="wadhaya-cart-item" key={item.id}>
+                  <img src={item.img} alt="" />
+                  <div className="wadhaya-cart-item-copy">
+                    <h3>{item.title}</h3><p>AED {(item.price * item.quantity).toFixed(2)}</p>
+                    <div className="wadhaya-quantity-control">
+                      <button type="button" onClick={() => onChangeQuantity(item.id, item.quantity - 1)} aria-label="Decrease quantity"><Minus size={13} /></button>
+                      <span>{item.quantity}</span>
+                      <button type="button" onClick={() => onChangeQuantity(item.id, item.quantity + 1)} aria-label="Increase quantity"><Plus size={13} /></button>
+                      <button type="button" className="wadhaya-remove-item" onClick={() => onRemove(item.id)} aria-label="Remove item"><Trash2 size={14} /></button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="wadhaya-cart-summary">
+              <div><span>Subtotal</span><strong>AED {total.toFixed(2)}</strong></div>
+              <p>Delivery fees, availability and final order details will be confirmed on WhatsApp.</p>
+              <button type="button" className="wadhaya-checkout-button" onClick={checkout}>Continue on WhatsApp <span>↗</span></button>
+            </div>
+          </>
+        )}
+      </aside>
+    </div>
+  );
+};
+
+export default Cart;
