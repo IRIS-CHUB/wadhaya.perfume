@@ -19,11 +19,11 @@ const BannerData = {
   discount: '30% OFF',
   title: 'Wadhaya Perfume',
   date: 'Limited Time',
-  image: Perfume ,
-  title2: 'Cool Fragrance',
-  title3: 'Special Sale',
+  image: Perfume,
+  title2: 'Signature Fragrance',
+  title3: 'A scent of distinction',
   title4: 'Discover your signature fragrance with Wadhaya.',
-  bgColor: '#088395',
+  bgColor: '#8A6A3E',
 };
 
 const BannerData2 = {
@@ -31,17 +31,17 @@ const BannerData2 = {
   title: 'Wadhaya Attar',
   date: 'Limited Time',
   image: Attar,
-  title2: 'Woody Attar',
-  title3: 'Special Sale',
+  title2: 'Arabian Oud',
+  title3: 'Tradition, reimagined',
   title4: 'Discover exclusive fragrances with Wadhaya.',
-  bgColor: '#03113F',
+  bgColor: '#332719',
 };
 
 const App = () => {
   const [orderPopup, setOrderPopup] = React.useState(false);
 
   const handleOrderPopup = () => {
-    setOrderPopup(!orderPopup);
+    setOrderPopup((open) => !open);
   };
 
   React.useEffect(() => {
@@ -50,23 +50,28 @@ const App = () => {
       easing: 'ease-in-sine',
       delay: 100,
       offset: 100,
+      once: true,
     });
     AOS.refresh();
   }, []);
 
   return (
-    <div className="dark:bg-bgdark bg-bgcolor duration-200 overflow-hidden">
+    <div className="wadhaya-site dark:bg-bgdark bg-bgcolor duration-200 overflow-hidden">
       <Navbar handleOrderPopup={handleOrderPopup} />
       <Hero handleOrderPopup={handleOrderPopup} />
-      <Category />
-      <Category2 />
-      <Services />
+      <div id="about">
+        <Category />
+        <Category2 />
+        <Services />
+      </div>
       <Banner data={BannerData} />
-      <Products />
+      <div id="Shop" className="wadhaya-collection-anchor">
+        <Products />
+      </div>
       <Banner data={BannerData2} />
       <Blogs />
       <Partners />
-      <Footer />
+      <div id="contactus"><Footer /></div>
       <Popup
         orderPopup={orderPopup}
         handleOrderPopup={handleOrderPopup}
