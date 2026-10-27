@@ -1,0 +1,103 @@
+/* Wadhaya luxury storefront refresh */
+:root {
+  --wadhaya-ink: #100e0a;
+  --wadhaya-ink-soft: #191611;
+  --wadhaya-gold: #c7a56a;
+  --wadhaya-gold-light: #e7d1a2;
+  --wadhaya-cream: #f3eee4;
+  --wadhaya-muted: #b6ad9c;
+}
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--wadhaya-ink); }
+.wadhaya-site { background: var(--wadhaya-ink) !important; color: var(--wadhaya-cream); min-height: 100vh; }
+.wadhaya-header { position: relative; z-index: 50; background: #100e0a; color: var(--wadhaya-cream); border-bottom: 1px solid rgba(199,165,106,.2); }
+.wadhaya-topline { min-height: 28px; padding: 7px clamp(18px, 5vw, 76px); display:flex; align-items:center; justify-content:space-between; gap:12px; background:#17140f; color:#b9a77f; font-size:9px; letter-spacing:.2em; }
+.wadhaya-topline-ar { letter-spacing:.04em; font-size:11px; color:#d4c4a3; }
+.wadhaya-nav { min-height:88px; padding:14px clamp(18px, 5vw, 76px); display:flex; align-items:center; justify-content:space-between; gap:28px; max-width:1600px; margin:0 auto; }
+.wadhaya-wordmark { display:flex; flex-direction:column; align-items:center; gap:2px; color:var(--wadhaya-gold-light); text-decoration:none; min-width:138px; }
+.wadhaya-wordmark-ar { font-family:Georgia,serif; font-size:28px; line-height:1.1; letter-spacing:.08em; }
+.wadhaya-wordmark-en { font-size:10px; letter-spacing:.34em; padding-left:.34em; }
+.wadhaya-nav-links { display:flex; align-items:center; gap:clamp(18px,3vw,44px); }
+.wadhaya-nav-links > a { color:#e3dac9; text-decoration:none; font-size:12px; letter-spacing:.08em; transition:color .2s ease; }
+.wadhaya-nav-links > a:hover { color:var(--wadhaya-gold-light); }
+.wadhaya-nav-actions { display:flex; align-items:center; gap:16px; }
+.wadhaya-theme-control { transform:scale(.72); transform-origin:center; width:62px; }
+.wadhaya-bag-button { display:flex; align-items:center; gap:9px; border:1px solid rgba(199,165,106,.55); color:var(--wadhaya-gold-light); padding:12px 16px; background:transparent; font-size:11px; letter-spacing:.1em; cursor:pointer; transition:background .2s ease,color .2s ease; }
+.wadhaya-bag-button:hover { background:var(--wadhaya-gold); color:#100e0a; }
+.wadhaya-menu-toggle,.wadhaya-mobile-order { display:none; }
+.wadhaya-hero { min-height:min(720px, calc(100vh - 116px)); position:relative; isolation:isolate; display:grid; grid-template-columns:1fr 1fr; align-items:center; overflow:hidden; background:radial-gradient(ellipse at 74% 48%, #322719 0%, #1a1711 27%, #100e0a 67%); padding:48px clamp(24px, 8vw, 126px) 82px; }
+.wadhaya-hero::before { content:""; position:absolute; inset:0; z-index:-1; opacity:.16; background-image:linear-gradient(rgba(199,165,106,.12) 1px, transparent 1px),linear-gradient(90deg,rgba(199,165,106,.12) 1px,transparent 1px); background-size:76px 76px; mask-image:linear-gradient(90deg,transparent,#000 45%,#000); }
+.wadhaya-hero-grain { position:absolute; inset:0; pointer-events:none; opacity:.09; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E"); }
+.wadhaya-hero-copy { position:relative; z-index:3; max-width:560px; padding:36px 0; }
+.wadhaya-eyebrow { display:flex; align-items:center; gap:12px; color:var(--wadhaya-gold); font-size:9px; letter-spacing:.25em; margin-bottom:26px; }
+.wadhaya-eyebrow span { width:28px; height:1px; background:var(--wadhaya-gold); }
+.wadhaya-hero-ar { color:#c8b18a; font-size:clamp(17px,2vw,22px); margin:0 0 16px; width:fit-content; }
+.wadhaya-hero h1 { color:var(--wadhaya-cream); font-family:Georgia,'Times New Roman',serif; font-size:clamp(54px,7.4vw,106px); line-height:.94; font-weight:400; letter-spacing:-.055em; margin:0; }
+.wadhaya-hero h1 em { color:var(--wadhaya-gold-light); font-weight:400; }
+.wadhaya-hero-description { color:#bdb4a4; font-size:13px; line-height:1.9; max-width:390px; margin:28px 0 30px; }
+.wadhaya-hero-actions { display:flex; align-items:center; flex-wrap:wrap; gap:24px; }
+.wadhaya-primary-cta { display:inline-flex; align-items:center; gap:22px; padding:16px 20px; background:var(--wadhaya-gold); color:#17130d; text-decoration:none; text-transform:uppercase; font-size:10px; letter-spacing:.12em; transition:background .2s ease,transform .2s ease; }
+.wadhaya-primary-cta:hover { background:var(--wadhaya-gold-light); transform:translateY(-2px); }
+.wadhaya-text-cta { border:0; background:transparent; color:#e4d8c2; font-size:11px; cursor:pointer; padding:10px 0; }
+.wadhaya-text-cta span { color:var(--wadhaya-gold); margin-left:8px; }
+.wadhaya-hero-note { display:flex; align-items:center; gap:12px; margin-top:64px; color:#8e8472; font-size:8px; letter-spacing:.2em; }
+.wadhaya-note-line { width:36px; height:1px; background:#77603c; }
+.wadhaya-hero-art { min-height:500px; height:100%; position:relative; display:flex; align-items:center; justify-content:center; }
+.wadhaya-hero-halo { position:absolute; width:min(38vw,450px); aspect-ratio:1; border-radius:50%; background:radial-gradient(circle,rgba(201,163,95,.22),rgba(147,105,48,.09) 42%,transparent 70%); filter:blur(4px); }
+.wadhaya-orbit { position:absolute; width:min(38vw,440px); aspect-ratio:1; border:1px solid rgba(199,165,106,.22); border-radius:50%; }
+.wadhaya-orbit-one { transform:scaleX(.76) rotate(24deg); }
+.wadhaya-orbit-two { transform:scaleX(.76) rotate(-38deg); border-color:rgba(199,165,106,.12); }
+.wadhaya-product-stage { position:relative; z-index:2; width:min(100%,470px); height:500px; display:flex; align-items:center; justify-content:center; }
+.wadhaya-hero-product { width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 28px 30px rgba(0,0,0,.55)); animation:wadhaya-float 7s ease-in-out infinite; }
+.wadhaya-art-caption { position:absolute; right:0; bottom:18px; left:0; display:flex; justify-content:space-between; gap:12px; color:#8f8168; font-size:8px; letter-spacing:.2em; }
+.wadhaya-art-caption-ar { font-size:11px; letter-spacing:0; }
+.wadhaya-scroll-cue { position:absolute; bottom:28px; left:clamp(24px,8vw,126px); display:flex; align-items:center; gap:12px; color:#948873; text-decoration:none; font-size:8px; letter-spacing:.18em; }
+.wadhaya-scroll-cue svg { color:var(--wadhaya-gold); }
+.wadhaya-hero-index { position:absolute; bottom:28px; right:clamp(24px,8vw,126px); color:#6d604b; font-family:Georgia,serif; font-size:13px; letter-spacing:.18em; }
+.wadhaya-collection-anchor { scroll-margin-top:24px; }
+@keyframes wadhaya-float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+@media (max-width:900px) {
+  .wadhaya-nav { min-height:76px; }
+  .wadhaya-nav-links { gap:18px; }
+  .wadhaya-nav-links > a { font-size:11px; }
+  .wadhaya-theme-control { display:none; }
+  .wadhaya-hero { padding-left:5vw; padding-right:5vw; }
+  .wadhaya-hero h1 { font-size:clamp(54px,8vw,80px); }
+  .wadhaya-hero-art { min-height:420px; }
+  .wadhaya-product-stage { height:420px; }
+}
+@media (max-width:640px) {
+  .wadhaya-topline { padding:7px 16px; font-size:7px; letter-spacing:.12em; }
+  .wadhaya-topline-ar { font-size:10px; }
+  .wadhaya-nav { padding:12px 18px; min-height:72px; }
+  .wadhaya-wordmark { align-items:flex-start; min-width:0; }
+  .wadhaya-wordmark-ar { font-size:24px; }
+  .wadhaya-wordmark-en { font-size:8px; letter-spacing:.27em; }
+  .wadhaya-nav-actions { gap:12px; }
+  .wadhaya-bag-button { padding:10px; }
+  .wadhaya-bag-button span { display:none; }
+  .wadhaya-menu-toggle { display:inline-flex; align-items:center; justify-content:center; color:var(--wadhaya-gold-light); border:0; background:transparent; padding:7px; }
+  .wadhaya-nav-links { display:none; position:absolute; top:100%; left:0; right:0; padding:18px 22px 22px; background:#17140f; border-bottom:1px solid rgba(199,165,106,.22); flex-direction:column; align-items:stretch; gap:0; }
+  .wadhaya-nav-links.is-open { display:flex; }
+  .wadhaya-nav-links > a { padding:14px 0; border-bottom:1px solid rgba(199,165,106,.12); font-size:12px; }
+  .wadhaya-mobile-order { display:flex; align-items:center; justify-content:space-between; border:0; background:var(--wadhaya-gold); color:#17130d; padding:13px 14px; margin-top:15px; font-size:11px; }
+  .wadhaya-hero { min-height:auto; grid-template-columns:1fr; padding:58px 24px 76px; }
+  .wadhaya-hero-copy { padding:0; }
+  .wadhaya-eyebrow { font-size:8px; margin-bottom:20px; }
+  .wadhaya-hero h1 { font-size:clamp(56px,15vw,84px); }
+  .wadhaya-hero-description { font-size:12px; margin:22px 0 24px; }
+  .wadhaya-hero-actions { gap:18px; }
+  .wadhaya-primary-cta { padding:15px 16px; gap:14px; }
+  .wadhaya-hero-note { margin-top:32px; }
+  .wadhaya-hero-art { min-height:330px; margin-top:4px; }
+  .wadhaya-product-stage { height:330px; }
+  .wadhaya-orbit,.wadhaya-hero-halo { width:min(76vw,340px); }
+  .wadhaya-art-caption { bottom:4px; }
+  .wadhaya-scroll-cue { left:24px; bottom:24px; }
+  .wadhaya-hero-index { right:24px; bottom:24px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  .wadhaya-hero-product { animation:none; }
+  .wadhaya-primary-cta { transition:none; }
+}
