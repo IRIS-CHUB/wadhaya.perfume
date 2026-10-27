@@ -9,7 +9,7 @@ const links = [
   { label: "Contact", href: "#contactus" },
 ];
 
-const Navbar = ({ handleOrderPopup }) => {
+const Navbar = ({ handleOrderPopup, cartCount = 0 }) => {
   const [darkMode, setDarkMode] = useState(() => {
     try {
       return localStorage.getItem("theme") === "dark";
@@ -58,6 +58,7 @@ const Navbar = ({ handleOrderPopup }) => {
           <button className="wadhaya-bag-button" onClick={handleOrderPopup} aria-label="Open order panel">
             <ShoppingBag size={19} strokeWidth={1.6} />
             <span>Order</span>
+            {cartCount > 0 && <span className="wadhaya-cart-count" aria-label={`${cartCount} items in bag`}>{cartCount}</span>}
           </button>
           <button className="wadhaya-menu-toggle" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
